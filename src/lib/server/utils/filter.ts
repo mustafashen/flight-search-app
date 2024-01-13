@@ -3,15 +3,15 @@ import { FilterArguments, Flight, QueryParams } from "../../types"
 const filterFunctions: Record<FilterArguments, (flight: Flight, filter: string) => boolean> = {
   departure_filter: (flight: Flight, filter: string) => {
     if (
-      flight.departure_airport.includes(filter) ||
-      flight.departure_city.includes(filter)
+      flight.departure_airport.toLocaleLowerCase().includes(filter.toLocaleLowerCase()) ||
+      flight.departure_city.toLocaleLowerCase().includes(filter.toLocaleLowerCase())
     ) return true
     else return false
   },
   arrival_filter: (flight: Flight, filter: string) => {
     if (
-      flight.arrival_airport.includes(filter) ||
-      flight.arrival_city.includes(filter)
+      flight.arrival_airport.toLocaleLowerCase().includes(filter.toLocaleLowerCase()) ||
+      flight.arrival_city.toLocaleLowerCase().includes(filter.toLocaleLowerCase())
     ) return true
     else return false
   },
