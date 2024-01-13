@@ -13,16 +13,18 @@ export default function Checkbox({
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   }) {
   return (
-    <span
+    <div
      className={className ? className : ''}>
       <label>
-        {label ? label : ''}
         <input 
           id={id ? id : ''} 
           type={'checkbox'}
           checked={checked ? checked : false}
           onChange={onChange ? onChange : () => {}}/>
+        <span>
+          {label ? label : ''}
+        </span>
       </label>
-    </span>
+    </div>
   )
 }

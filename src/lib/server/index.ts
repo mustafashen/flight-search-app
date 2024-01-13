@@ -8,7 +8,7 @@ export function initMockServer() {
   createServer({
     routes() {
       this.namespace = "api"
-
+      this.timing = 500
       this.get("/flights", (schema, request) => {
 
         let data: Flight[] | [] = schema.db.flights
