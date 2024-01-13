@@ -1,4 +1,4 @@
-import { sortingDefaults } from "../constants";
+import { SORTING_DEFAULTS } from "../constants";
 import { Flight, QueryParams } from "../types";
 import { validateFlightQuery, validateFlights } from "../validation";
 import { buildQuery } from "./utils";
@@ -6,13 +6,13 @@ import { buildQuery } from "./utils";
 export async function listFlights(listingArguments: QueryParams): Promise<Flight[] | []> {
 
   const args = {
-    ...sortingDefaults,
+    ...SORTING_DEFAULTS,
     ...listingArguments
   }
 
   try {
     const isValidQuery = validateFlightQuery(args)
-    if (!isValidQuery) throw new Error('Invalid query')
+    if (isValidQuery) throw new Error('Invalid query')
     
     const url = buildQuery(args)
 
@@ -22,7 +22,7 @@ export async function listFlights(listingArguments: QueryParams): Promise<Flight
         'content-type':'application/json'
       },
     })
-
+    
     const data: Flight[] = await response.json()
 
     if (validateFlights(data)) {

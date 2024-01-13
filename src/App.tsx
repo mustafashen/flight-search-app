@@ -1,11 +1,11 @@
 import './App.css'
-import SearchCard from './components/search-card'
+import MainCard from './components/main-card'
 
 function App() {
 
   return (
     <>
-      <SearchCard/>
+      <MainCard/>
     </>
   )
 }

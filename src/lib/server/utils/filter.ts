@@ -16,7 +16,6 @@ const filterFunctions: Record<FilterArguments, (flight: Flight, filter: string) 
     else return false
   },
   departure_date: (flight: Flight, filter: string) => {
-    console.log(flight.departure_date.split(' ')[0], filter)
     if (flight.departure_date.split(' ')[0] === filter) 
       return true
     else return false
